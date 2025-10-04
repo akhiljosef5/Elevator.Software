@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ElevatorApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElevatorApp
+namespace ElevatorApp.Services
 {
     public class ElevatorService
     {

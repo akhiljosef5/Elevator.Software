@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using ElevatorApp;
+using ElevatorApp.Constants;
+using ElevatorApp.Domain;
+using ElevatorApp.Services;
 
 Random random = new Random();
 
@@ -19,13 +21,13 @@ foreach (var elevator in elevators)
     Console.WriteLine(elevator);
 }
 
-for(int i = 0;i < 2;i++) // simulate random elevator requests
+for(int i = 0;i < 3;i++) // simulate random elevator requests
 {
-    int originFloor = random.Next(1,Constants.TopFLoor + 1);
+    int originFloor = random.Next(1,ElevatorConstants.TopFLoor + 1);
     int targetFloor;
     do
     {
-        targetFloor = random.Next(1,Constants.TopFLoor + 1);
+        targetFloor = random.Next(1,ElevatorConstants.TopFLoor + 1);
     }    while(targetFloor == originFloor);
 
     string direction = targetFloor > originFloor? "Up" : "Down";
@@ -50,5 +52,5 @@ for(int i = 0;i < 2;i++) // simulate random elevator requests
     chosenElevator.Move(targetFloor,direction);
 
     Console.WriteLine($"[LOG]:INFO {DateTime.UtcNow} Car {chosenElevator.Id} " +
-        $"at floor {chosenElevator.CurrentFloor}, direction={chosenElevator.Direction}");
+        $"at floor {chosenElevator.CurrentFloor}, direction={chosenElevator.LiftDirection}");
 }

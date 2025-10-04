@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElevatorApp
+namespace ElevatorApp.Constants
 {
-    public class Constants
+    public class ElevatorConstants
     {
-        public const string Up = "Up";
-        public const string Down = "Down";
-        public const string Idle = "Idle";
         public const int TopFLoor = 10;
         public const int BaseFloor = 1;
     }
