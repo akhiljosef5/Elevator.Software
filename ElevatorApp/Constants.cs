@@ -10,6 +10,7 @@ namespace ElevatorApp
     {
         public const string Up = "Up";
         public const string Down = "Down";
+        public const string Idle = "Idle";
         public const int TopFLoor = 10;
         public const int BaseFloor = 1;
     }
