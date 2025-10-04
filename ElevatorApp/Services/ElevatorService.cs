@@ -1,15 +1,15 @@
 ﻿using ElevatorApp.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ElevatorApp.Services
 {
+    /// <summary>
+    /// Chose the closest elevator to the specified floor from a list of available elevators.
+    /// Returns the chosen Elevator object.
+    /// </summary>
     public class ElevatorService
     {
-        public static Elevator PickClosestElevator(List<Elevator> elevators, int originFloor) {
+        public static Elevator PickClosestElevator(List<Elevator> elevators,int originFloor)
+        {
             /*order the elevators by the distance from the target floor, and if
             two elevators are at same distance then choose the one with lower Id*/
             var closestElevator = elevators

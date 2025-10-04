@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ElevatorApp.Domain
+﻿namespace ElevatorApp.Domain
 {
+    /// <summary>
+    /// Direction enum representing the possible states of an elevator's movement.
+    /// </summary>
     public enum Direction
     {
         Up,
