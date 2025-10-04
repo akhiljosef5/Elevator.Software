@@ -1,54 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ElevatorApp
 {
     public class Elevator
     {
-        public int ElevatorId { get; set; }
+        public int Id { get; }
         public int CurrentFloor { get; set; }
-        public bool IsMoving { get; set; } = false;
-        public string Direction { get; set; } = "idle"; // "Up", "Down", or "Idle"
+        //count of directions, means how many "Up" nd "Down" commands received
+        public string Direction { get; set; }
 
-        public static void MoveElevator(List<Elevator> elevators, int targetFloor)
+        public Elevator(int id)
         {
-            foreach (Elevator e in elevators)
+            Id = id;
+        }
+
+        public void Move(int targetFloor, string direction)
+        {
+            Console.WriteLine($"[LOG]:INFO {DateTime.UtcNow} Car {this.Id} on {this.CurrentFloor} floor");
+
+            while(CurrentFloor != targetFloor)
             {
-                if(e.IsMoving)
+                if(CurrentFloor < targetFloor)
                 {
-                    Console.WriteLine($"LOG INFO: elevator {e.ElevatorId} is busy");
+                    Direction = "Up";
+                    CurrentFloor++;
                 }
                 else
                 {
-                    if(targetFloor == e.CurrentFloor)
-                    {
-                        e.IsMoving = false;
-                        e.Direction = "Idle";
-                        return;
-                    }
-                    e.IsMoving = true;
-                    if(targetFloor > e.CurrentFloor)
-                    {
-                        e.Direction = "Up";
-                        while(e.CurrentFloor < targetFloor)
-                        {
-                            e.CurrentFloor++;
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        e.Direction = "Down";
-                        while(e.CurrentFloor > targetFloor)
-                        {
-                            e.CurrentFloor--;
-                        }
-                    }
+                    Direction = "Down";
+                    CurrentFloor--;
                 }
+
+                Console.WriteLine($"[LOG]:INFO {DateTime.UtcNow} Car {Id} moving {Direction} from {CurrentFloor} floor");
             }
+
+            Direction = "Idle";
         }
+
     }
 }
